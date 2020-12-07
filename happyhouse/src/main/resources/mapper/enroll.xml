@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ssafy.happyhouse.model.repo.EnrollRepo">
+    <insert id="inserthd" parameterType="HouseDealDto">
+       insert into housedeal(dealAmount, buildYear, dong, aptName, area, jibun, code, floor) 
+       values(#{dealAmount}, #{buildYear},  #{dong}, #{aptName}, #{area}, #{jibun}, #{code}, #{floor})
+    </insert>
+    <select id="isexist" parameterType="HouseDealDto" resultType="int">
+       select count(aptName) from houseinfo where aptName = #{aptName} and dong = #{dong};
+    </select>
+    <insert id="inserthi" parameterType="HouseDealDto">
+       insert into houseinfo(dong, aptName, jibun, code) 
+       values(#{dong}, #{aptName},#{jibun}, #{code})
+    </insert>
+ </mapper>

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+table {
+    width: 100%;
+    background: white;
+    padding: 10px;
+    height: 350px;
+}
+
+input {
+    margin: 10px;
+    padding: 7px;
+}
+
+.btn-group {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.section--feature {
+    padding-bottom: 30px;
+}
+
+.inner h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+tbody {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.form--style {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.regbtn{
+		justify-content: center;
+}

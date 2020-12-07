@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.repo.MapRepo">
+
+	<select id="getSido" resultType="SidoGugunCodeDto">
+		select left(sido_code, 2) sido_code, sido_name
+		from sidocode
+		order by sido_code
+	</select>
+	
+	<select id="getGugunInSido" parameterType="String" resultType="SidoGugunCodeDto">
+		select left(gugun_code, 5) gugun_code, gugun_name 
+		from guguncode
+		where left(gugun_code, 2) = #{sido_code}
+		order by gugun_code
+	</select>
+	
+	<select id="getDongInGugun" parameterType="String" resultType="HouseInfoDto">
+		select distinct dong, code 
+		from houseinfo
+		where code = #{gugun}
+		order by dong
+	</select>
+	
+	<select id="getAptInDong" parameterType="String" resultType="HouseInfoDto">
+		select no, dong, AptName, code, jibun
+		from houseinfo
+		where dong = #{dong}
+		order by AptName
+	</select>
+	
+	<select id="getStoreInDong" parameterType="String" resultType="StoreInfoDto">
+		select dong, roadname, storename, lat, lng
+		from storeinfo
+		where dong = #{dong}
+	</select>
+	
+	<select id="getDealByAptName" parameterType="String" resultType="HouseDealDto">
+		select *
+		from housedeal
+		where aptName = #{aptName} and dong = #{dong};
+	</select>
+	
+	<select id="getStoreInfoByName" parameterType="String" resultType="StoreInfoDto">
+		select dong, roadname
+		from storeinfo
+		where storename = #{storeName}
+	</select>
+	
+	<select id="getHealthCenters" parameterType="String" resultType="HealthCenterDto">
+		select no, institute, address, oponweek, oponweekend, oponholiday, tel
+		from healthcenter
+		where #{sido} like concat(sido, '%') and gugun=#{gugun}
+	</select>
+	
+	<select id="getSafeHospitals" parameterType="String" resultType="SafeHospitalDto">
+		select *
+		from safehospital
+		where address like concat(#{address}, '%')
+	</select>
+</mapper>
